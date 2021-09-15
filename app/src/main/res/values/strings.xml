@@ -3,4 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_scan">Scan</string>
     <string name="title_store">Store</string>
+    <string name="home_top_text">Popular Plant \nAmong The People</string>
+    <string name="search_box_hint_text">Search</string>
+    <string name="more_information_text">More information</string>
 </resources>

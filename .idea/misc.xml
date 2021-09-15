@@ -3,15 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/btn_bg.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/ic_filter_state.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/ic_home_24.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/ic_scan_24.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/ic_settings_24.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/ic_store_24.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/search_box_bg.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/state_pressed_ripple.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/fragment_dashboard.xml" value="0.259375" />
-        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/fragment_home.xml" value="0.259375" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/fragment_scan.xml" value="0.259375" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/fragment_store.xml" value="0.259375" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/plant_list_item.xml" value="0.264" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/menu/bottom_nav_menu.xml" value="0.264" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2755208333333333" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2755208333333333" />
       </map>
     </option>
   </component>
