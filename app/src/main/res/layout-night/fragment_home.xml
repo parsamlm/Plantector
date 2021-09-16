@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColorDark">
 
 
     <RelativeLayout
@@ -21,15 +21,15 @@
             android:id="@+id/date_home_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_medium"
-            android:textColor="@color/colorPrimary"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Monday, September 13, 2021"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Monday, September 13, 2021" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/settings_home_iv"
@@ -37,12 +37,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/btn_bg_white"
+            android:background="@drawable/btn_bg_dark"
             android:clickable="true"
             android:focusable="true"
             android:foreground="@drawable/ic_filter_state"
             android:padding="6dp"
-            android:src="@drawable/ic_settings_24" />
+            android:src="@drawable/ic_settings_24_dark" />
 
     </RelativeLayout>
 
@@ -56,7 +56,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/quicksand_semi_bold"
         android:text="@string/home_top_text"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="24sp" />
 
 
@@ -89,6 +89,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:hint="@string/search_box_hint_text"
+            android:textColorHint="@color/gray"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:maxLines="1"
             android:maxLength="15"
@@ -114,9 +116,5 @@
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:spanCount="2"
         tools:listitem="@layout/plant_list_item" />
-
-
-
-
 
 </RelativeLayout>

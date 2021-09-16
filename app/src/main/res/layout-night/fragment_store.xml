@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.store.StoreFragment"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColorDark">
 
     <RelativeLayout
         android:id="@+id/top_bar_home_rv"
@@ -19,15 +19,15 @@
             android:id="@+id/date_home_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/quicksand_medium"
-            android:textColor="@color/colorPrimary"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Monday, September 13, 2021"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Monday, September 13, 2021" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/settings_home_iv"
@@ -36,10 +36,10 @@
             android:clickable="true"
             android:padding="6dp"
             android:foreground="@drawable/ic_filter_state"
-            android:src="@drawable/ic_settings_24"
+            android:src="@drawable/ic_settings_24_dark"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/btn_bg_white"
+            android:background="@drawable/btn_bg_dark"
             android:focusable="true"/>
 
     </RelativeLayout>
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:lottie_rawRes="@raw/coming_soon_animation"
+        app:lottie_rawRes="@raw/coming_soon_animation_dark"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"/>
 

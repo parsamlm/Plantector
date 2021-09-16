@@ -23,6 +23,7 @@
     <color name="colorPrimaryVariantDark">#207A6F</color>
     <color name="colorSecondaryDark">#2A9D8F</color>
     <color name="colorSecondaryVariantDark">#207A6F</color>
+    <color name="bottomNavigationBackgroundColor">#16282B</color>
     <color name="backgroundColorDark">#01151A</color>
 
 
