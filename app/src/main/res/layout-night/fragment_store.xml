@@ -22,7 +22,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:fontFamily="@font/quicksand_medium"
-            android:text="Monday, September 13, 2021"
+            tools:text="Monday, September 13, 2021"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"

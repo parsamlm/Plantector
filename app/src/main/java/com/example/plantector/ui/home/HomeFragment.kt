@@ -1,17 +1,16 @@
 package com.example.plantector.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.plantector.R
 import com.example.plantector.databinding.FragmentHomeBinding
+import com.example.plantector.ui.settings.SettingsActivity
 
 class HomeFragment : Fragment() {
 
@@ -36,6 +35,14 @@ class HomeFragment : Fragment() {
 
 
         return root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<ImageView>(R.id.settings_home_iv).setOnClickListener {
+            startActivity(Intent(activity, SettingsActivity()::class.java))
+        }
     }
 
     override fun onDestroyView() {
