@@ -6,7 +6,7 @@
     app:cardElevation="2dp"
     app:cardCornerRadius="10dp"
     android:layout_margin="10dp"
-    android:layout_centerInParent="true"
+    android:layout_centerHorizontal="true"
     app:rippleColor="@color/lowOpacityColorPrimary"
     android:foreground="?attr/selectableItemBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"

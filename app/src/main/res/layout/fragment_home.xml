@@ -35,14 +35,14 @@
             android:id="@+id/settings_home_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:padding="6dp"
-            android:foreground="@drawable/ic_filter_state"
-            android:src="@drawable/ic_settings_24"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:background="@drawable/btn_bg"
-            android:focusable="true"/>
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/ic_filter_state"
+            android:padding="6dp"
+            android:src="@drawable/ic_settings_24" />
 
     </RelativeLayout>
 
@@ -50,14 +50,14 @@
         android:id="@+id/home_top_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/home_top_text"
-        android:textSize="24sp"
-        android:fontFamily="@font/quicksand_semi_bold"
-        android:textColor="@color/black"
         android:layout_below="@+id/top_bar_home_rv"
-        android:layout_marginTop="20dp"
         android:layout_alignStart="@id/top_bar_home_rv"
-        android:layout_marginStart="15dp"/>
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/quicksand_semi_bold"
+        android:text="@string/home_top_text"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
 
 
     <LinearLayout
@@ -105,14 +105,15 @@
         android:layout_below="@id/search_box_home"
         android:layout_alignStart="@id/top_bar_home_rv"
         android:layout_alignEnd="@id/top_bar_home_rv"
+        android:layout_centerInParent="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="30dp"
-        tools:listitem="@layout/plant_list_item"
         android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:spanCount="2"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"/>
+        tools:listitem="@layout/plant_list_item" />
 
 
 

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable-v24/btn_bg_active.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/btn_bg.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/ic_filter_state.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/ic_home_24.xml" value="0.2755208333333333" />
@@ -13,6 +14,7 @@
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/search_box_bg.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/drawable/state_pressed_ripple.xml" value="0.2755208333333333" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/fragment_dashboard.xml" value="0.259375" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/Parsa/AndroidStudioProjects/Plantector/app/src/main/res/layout/fragment_scan.xml" value="0.259375" />

@@ -20,7 +20,7 @@ class PlantAdapter(private val context: Context) : RecyclerView.Adapter<PlantAda
     }
 
     override fun onBindViewHolder(holder: PlantViewHolder, position: Int) {
-        holder.bind()
+        //holder.bind()
     }
 
     override fun getItemCount(): Int {
