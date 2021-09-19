@@ -1,6 +1,7 @@
 package com.example.plantector.ui.settings
 
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.CompoundButton

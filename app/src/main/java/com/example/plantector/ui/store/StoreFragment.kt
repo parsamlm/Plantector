@@ -34,7 +34,7 @@ class StoreFragment : Fragment() {
         _binding = FragmentStoreBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val date = Tempo.now.toString().subSequence(0, 9).toString() + "," + Tempo.now.toString()
+        val date = Tempo.now.toString().subSequence(0, 10).toString() + "," + Tempo.now.toString()
             .subSequence(29, Tempo.now.toString().length).toString()
 
         binding.dateStoreTv.text = date
