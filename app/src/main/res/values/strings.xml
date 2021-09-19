@@ -9,4 +9,6 @@
     <string name="settings">Settings</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="help_text_dark_mode_settings">Turn on to avoid irritating your eyes</string>
+    <string name="description">Description</string>
+    <string name="plant_details_picture_description">Plant details picture.</string>
 </resources>
