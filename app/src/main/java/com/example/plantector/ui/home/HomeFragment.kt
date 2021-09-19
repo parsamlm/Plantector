@@ -8,15 +8,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.cesarferreira.tempo.Tempo
-import com.cesarferreira.tempo.beginningOfDay
-import com.cesarferreira.tempo.removeHours
+import com.example.plantector.Helper
 import com.example.plantector.R
 import com.example.plantector.databinding.FragmentHomeBinding
 import com.example.plantector.model.Plant
-import com.example.plantector.model.PlantList
 import com.example.plantector.ui.settings.SettingsActivity
 
 class HomeFragment : Fragment() {
@@ -25,8 +21,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private lateinit var plantAdapter: PlantAdapter
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -40,17 +34,13 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val date = Tempo.now.toString().subSequence(0, 10).toString() + "," + Tempo.now.toString()
-            .subSequence(29, Tempo.now.toString().length).toString()
+        binding.dateHomeTv.text = Helper.getDate()
 
-        binding.dateHomeTv.text = date
-
-        val plantList = PlantList.makeDefaultFlowerList()
+        val plantList = Plant.getDefaultFlowerList()
         plantAdapter = PlantAdapter(root.context, plantList)
         binding.homeRv.adapter = plantAdapter
         binding.homeRv.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-
 
         return root
     }

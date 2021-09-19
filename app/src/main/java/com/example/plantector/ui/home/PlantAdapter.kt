@@ -31,10 +31,10 @@ class PlantAdapter(public val context: Context, private val plantList: List<Plan
 
 
     class PlantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val img: ImageView = itemView.findViewById(R.id.item_iv)
-        val name: TextView = itemView.findViewById(R.id.item_name_tv)
-        val family: TextView = itemView.findViewById(R.id.item_family_tv)
-        val moreInfoButton: MaterialButton = itemView.findViewById(R.id.item_more_info_btn)
+        private val img: ImageView = itemView.findViewById(R.id.item_iv)
+        private val name: TextView = itemView.findViewById(R.id.item_name_tv)
+        private val family: TextView = itemView.findViewById(R.id.item_family_tv)
+        private val moreInfoButton: MaterialButton = itemView.findViewById(R.id.item_more_info_btn)
 
         fun bind(plant: Plant) {
             img.setImageResource(plant.img_dir)
@@ -43,6 +43,5 @@ class PlantAdapter(public val context: Context, private val plantList: List<Plan
         }
 
     }
-
 
 }

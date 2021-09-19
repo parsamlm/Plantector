@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.cesarferreira.tempo.Tempo
+import com.example.plantector.Helper
 import com.example.plantector.R
 import com.example.plantector.databinding.FragmentHomeBinding
 import com.example.plantector.databinding.FragmentStoreBinding
@@ -34,10 +35,7 @@ class StoreFragment : Fragment() {
         _binding = FragmentStoreBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val date = Tempo.now.toString().subSequence(0, 10).toString() + "," + Tempo.now.toString()
-            .subSequence(29, Tempo.now.toString().length).toString()
-
-        binding.dateStoreTv.text = date
+        binding.dateStoreTv.text = Helper.getDate()
 
         return root
     }
