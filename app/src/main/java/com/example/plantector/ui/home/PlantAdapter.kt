@@ -11,8 +11,17 @@ import com.example.plantector.R
 import com.example.plantector.model.Plant
 import com.google.android.material.button.MaterialButton
 
-class PlantAdapter(public val context: Context, private val plantList: List<Plant>) :
+    lateinit var innerOnPlantItemClicked: PlantAdapter.OnPlantItemClicked
+class PlantAdapter(
+    val context: Context,
+    private val onPlantItemClicked: OnPlantItemClicked,
+    private val plantList: List<Plant>
+) :
     RecyclerView.Adapter<PlantAdapter.PlantViewHolder>() {
+
+    init {
+        innerOnPlantItemClicked = this.onPlantItemClicked
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
@@ -40,8 +49,16 @@ class PlantAdapter(public val context: Context, private val plantList: List<Plan
             img.setImageResource(plant.img_dir)
             name.text = plant.name
             family.text = plant.family
+
+            moreInfoButton.setOnClickListener {
+                innerOnPlantItemClicked.onMoreInfoButtonClicked(plant)
+            }
         }
 
+    }
+
+    interface OnPlantItemClicked {
+        fun onMoreInfoButtonClicked(plant: Plant)
     }
 
 }

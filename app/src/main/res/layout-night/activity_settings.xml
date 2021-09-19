@@ -19,7 +19,7 @@
         android:focusable="true"
         android:foreground="@drawable/ic_filter_state"
         android:padding="3dp"
-        android:src="@drawable/ic_back_24" />
+        android:src="@drawable/ic_back_24_dark" />
 
     <TextView
         android:id="@+id/settings_tv_settings"

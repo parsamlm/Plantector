@@ -1,12 +1,15 @@
 package com.example.plantector.model
 
+import android.os.Parcelable
 import com.example.plantector.R
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Plant(
     val name: String,
     val family: String,
     val img_dir: Int
-){
+) : Parcelable {
     companion object{
         fun getDefaultFlowerList(): List<Plant> {
             return listOf(Plant("Dahlia", "Asteraceae", R.drawable.dahlia),
