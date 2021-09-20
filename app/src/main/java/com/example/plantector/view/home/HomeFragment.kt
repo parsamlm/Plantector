@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
@@ -54,9 +55,15 @@ class HomeFragment : Fragment(), PlantAdapter.OnPlantItemClicked {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<ImageView>(R.id.settings_home_iv).setOnClickListener {
+        binding.settingsHomeIv.setOnClickListener {
             startActivity(Intent(activity, SettingsActivity()::class.java))
         }
+
+        binding.searchBoxEtHome.addTextChangedListener {
+            plantAdapter.filter(it.toString())
+            // todo some bug should be fixed
+        }
+
     }
 
     override fun onDestroyView() {

@@ -15,7 +15,7 @@ import com.google.android.material.button.MaterialButton
 class PlantAdapter(
     val context: Context,
     private val onPlantItemClicked: OnPlantItemClicked,
-    private val plantList: List<Plant>
+    private var plantList: List<Plant>
 ) :
     RecyclerView.Adapter<PlantAdapter.PlantViewHolder>() {
 
@@ -36,6 +36,21 @@ class PlantAdapter(
 
     override fun getItemCount(): Int {
         return plantList.size
+    }
+
+    fun filter(query: String){
+        val searchList = arrayListOf<Plant>()
+        plantList.forEach {
+            if(it.name.contains(query)){
+                searchList.add(it)
+            }
+        }
+        updateList(searchList)
+    }
+
+    private fun updateList(searchList: List<Plant>){
+        plantList = searchList
+        notifyDataSetChanged()
     }
 
 
