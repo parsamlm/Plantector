@@ -1,4 +1,4 @@
-package com.example.plantector.ui.store
+package com.example.plantector.view.store
 
 import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
@@ -8,12 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.cesarferreira.tempo.Tempo
 import com.example.plantector.Helper
 import com.example.plantector.R
-import com.example.plantector.databinding.FragmentHomeBinding
 import com.example.plantector.databinding.FragmentStoreBinding
-import com.example.plantector.ui.settings.SettingsActivity
+import com.example.plantector.view.settings.SettingsActivity
+import com.example.plantector.viewmodel.StoreViewModel
 
 class StoreFragment : Fragment() {
 

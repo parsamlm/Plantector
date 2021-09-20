@@ -1,10 +1,8 @@
-package com.example.plantector.ui.settings
+package com.example.plantector.view.settings
 
 import android.content.SharedPreferences
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.CompoundButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.plantector.R

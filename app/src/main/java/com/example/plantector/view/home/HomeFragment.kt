@@ -1,4 +1,4 @@
-package com.example.plantector.ui.home
+package com.example.plantector.view.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,9 +14,9 @@ import com.example.plantector.Helper
 import com.example.plantector.R
 import com.example.plantector.databinding.FragmentHomeBinding
 import com.example.plantector.model.Plant
-import com.example.plantector.ui.plant.details.PlantDetailsFragment
-import com.example.plantector.ui.settings.SettingsActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.plantector.view.plant.details.PlantDetailsFragment
+import com.example.plantector.view.settings.SettingsActivity
+import com.example.plantector.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment(), PlantAdapter.OnPlantItemClicked {
 

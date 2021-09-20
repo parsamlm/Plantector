@@ -1,4 +1,4 @@
-package com.example.plantector.ui.home
+package com.example.plantector.view.home
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -1,4 +1,4 @@
-package com.example.plantector.ui.home
+package com.example.plantector.viewmodel
 
 import androidx.lifecycle.ViewModel
 
