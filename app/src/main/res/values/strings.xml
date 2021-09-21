@@ -11,4 +11,6 @@
     <string name="help_text_dark_mode_settings">Turn on to avoid irritating your eyes</string>
     <string name="description">Description</string>
     <string name="plant_details_picture_description">Plant details picture.</string>
+    <string name="permission_deny_text">Required permissions denied. Exiting.</string>
+    <string name="see_more">See more</string>
 </resources>

@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.example.plantector.Helper
+import com.example.plantector.util.Helper
 import com.example.plantector.R
 import com.example.plantector.databinding.FragmentStoreBinding
 import com.example.plantector.view.settings.SettingsActivity
