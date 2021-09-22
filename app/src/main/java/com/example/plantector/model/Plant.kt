@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Plant(
-    val name: String,
+    var name: String,
     val family: String,
     val img_dir: Int,
     @SerializedName("extract")

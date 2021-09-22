@@ -19,14 +19,18 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.plantector.R
 import com.example.plantector.databinding.FragmentScanBinding
 import com.example.plantector.ml.FlowerModel
+import com.example.plantector.model.Plant
 import com.example.plantector.util.YuvToRgbConverter
+import com.example.plantector.view.OnItemRecognizedClicked
 import com.example.plantector.view.RecognitionAdapter
+import com.example.plantector.view.plant.details.PlantDetailsFragment
 import com.example.plantector.viewmodel.Recognition
 import com.example.plantector.viewmodel.RecognitionListViewModel
 import com.example.plantector.viewmodel.ScanViewModel
@@ -42,12 +46,13 @@ private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA) // permis
 
 typealias RecognitionListener = (recognition: List<Recognition>) -> Unit
 
-class ScanFragment : Fragment() {
+class ScanFragment : Fragment(), OnItemRecognizedClicked {
 
     private lateinit var preview: Preview // Preview use case, fast, responsive view of the camera
     private lateinit var imageAnalyzer: ImageAnalysis // Analysis use case, for running ML code
     private lateinit var camera: Camera
     private val cameraExecutor = Executors.newSingleThreadExecutor()
+    lateinit var fragmentTransaction: FragmentTransaction
 
 
 
@@ -75,6 +80,8 @@ class ScanFragment : Fragment() {
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        fragmentTransaction = parentFragmentManager.beginTransaction()
+
 
 
         return root
@@ -92,7 +99,8 @@ class ScanFragment : Fragment() {
         }
 
         // Initialising the resultRecyclerView and its linked viewAdaptor
-        val viewAdapter = RecognitionAdapter(requireContext())
+        // todo
+        val viewAdapter = RecognitionAdapter(requireContext(), this)
         resultRecyclerView.adapter = viewAdapter
 
         // Disable recycler view animation to reduce flickering, otherwise items can move, fade in
@@ -140,16 +148,13 @@ class ScanFragment : Fragment() {
             if (allPermissionsGranted()) {
                 startCamera()
             } else {
-                // Exit the app if permission is not granted
-                // Best practice is to explain and offer a chance to re-request but this is out of
-                // scope in this sample. More details:
-                // https://developer.android.com/training/permissions/usage-notes
+
                 Toast.makeText(
                     context,
                     getString(R.string.permission_deny_text),
                     Toast.LENGTH_SHORT
                 ).show()
-                // finish()
+                findNavController().navigate(R.id.action_navigation_scan_to_navigation_home)
             }
         }
     }
@@ -216,12 +221,12 @@ class ScanFragment : Fragment() {
     private class ImageAnalyzer(ctx: Context, private val listener: RecognitionListener) :
         ImageAnalysis.Analyzer {
 
-        // TODO 1: Add class variable TensorFlow Lite Model
+        // Add class variable TensorFlow Lite Model
         // Initializing the flowerModel by lazy so that it runs in the same thread when the process
         // method is called.
         private val flowerModel: FlowerModel by lazy{
 
-            // TODO 6. Optional GPU acceleration
+            // Optional GPU acceleration
             val compatList = CompatibilityList()
 
             val options = if(compatList.isDelegateSupportedOnThisDevice) {
@@ -240,27 +245,20 @@ class ScanFragment : Fragment() {
 
             val items = mutableListOf<Recognition>()
 
-            // TODO 2: Convert Image to Bitmap then to TensorImage
+            // Convert Image to Bitmap then to TensorImage
             val tfImage = TensorImage.fromBitmap(toBitmap(imageProxy))
 
-            // TODO 3: Process the image using the trained model, sort and pick out the top results
+            // Process the image using the trained model, sort and pick out the top results
             val outputs = flowerModel.process(tfImage)
                 .probabilityAsCategoryList.apply {
                     sortByDescending { it.score } // Sort with highest confidence first
                 }.take(MAX_RESULT_DISPLAY) // take the top results
 
-            // TODO 4: Converting the top probability items into a list of recognitions
+            // Converting the top probability items into a list of recognitions
             for (output in outputs) {
                 items.add(Recognition(output.label, output.score))
             }
 
-//            // START - Placeholder code at the start of the codelab. Comment this block of code out.
-//            for (i in 0 until MAX_RESULT_DISPLAY){
-//                items.add(Recognition("Fake label $i", Random.nextFloat()))
-//            }
-//            // END - Placeholder code at the start of the codelab. Comment this block of code out.
-
-            // Return the result
             listener(items.toList())
 
             // Close the image,this tells CameraX to feed the next image to the analyzer
@@ -306,5 +304,29 @@ class ScanFragment : Fragment() {
         }
 
     }
+
+    override fun onSeeMoreButtonClicked(plantName: String) {
+        val plantList = Plant.getDefaultFlowerList()
+        var targetPlant = Plant("", "", 0)
+        for (plant in plantList){
+            if(plantName[plantName.lastIndex] == 's'){
+                val newPlantName = plantName.substring(0, plantName.lastIndex).lowercase()
+                if (newPlantName == plant.name.lowercase()){
+                    targetPlant = plant
+                    targetPlant.name = targetPlant.name.lowercase()
+                    break
+                }
+            }else{
+                if (plant.name.lowercase() == plantName){
+                    targetPlant = plant
+                }
+            }
+
+        }
+        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, PlantDetailsFragment.newInstance(targetPlant))
+            .addToBackStack("Fragment_PlantDetails").commit()
+
+    }
+
 
 }

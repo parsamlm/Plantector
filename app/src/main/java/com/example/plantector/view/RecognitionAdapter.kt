@@ -7,10 +7,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.plantector.databinding.RecognitionItemBinding
+import com.example.plantector.model.Plant
+import com.example.plantector.view.scan.ScanFragment
 import com.example.plantector.viewmodel.Recognition
 
-class RecognitionAdapter(private val ctx: Context) :
+lateinit var onItemRecognizedClickedInner: OnItemRecognizedClicked
+class RecognitionAdapter(private val ctx: Context, private val onItemRecognizedClicked: OnItemRecognizedClicked) :
     ListAdapter<Recognition, RecognitionViewHolder>(RecognitionDiffUtil()) {
+
+    init {
+        onItemRecognizedClickedInner = onItemRecognizedClicked
+    }
 
     /**
      * Inflating the ViewHolder with recognition_item layout and data binding
@@ -44,8 +51,18 @@ class RecognitionViewHolder(private val binding: RecognitionItemBinding) :
 
     // Binding all the fields to the view - to see which UI element is bind to which field, check
     // out layout/recognition_item.xml
+
+
+
     fun bindTo(recognition: Recognition) {
         binding.recognitionItem = recognition
         binding.executePendingBindings()
+        binding.seeMoreButtonScan.setOnClickListener {
+            onItemRecognizedClickedInner.onSeeMoreButtonClicked(recognition.label)
+        }
     }
+}
+
+interface OnItemRecognizedClicked{
+    fun onSeeMoreButtonClicked(plantName: String)
 }
