@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.plantector.view.home.HomeFragment"
+        android:name="com.parsamlm.plantector.view.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_scan"
-        android:name="com.example.plantector.view.scan.ScanFragment"
+        android:name="com.parsamlm.plantector.view.scan.ScanFragment"
         android:label="@string/title_scan"
         tools:layout="@layout/fragment_scan">
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/navigation_store"
-        android:name="com.example.plantector.view.store.StoreFragment"
+        android:name="com.parsamlm.plantector.view.store.StoreFragment"
         android:label="@string/title_store"
         tools:layout="@layout/fragment_store" />
 </navigation>

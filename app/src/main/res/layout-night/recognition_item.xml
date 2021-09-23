@@ -8,7 +8,7 @@
 
         <variable
             name="recognitionItem"
-            type="com.example.plantector.viewmodel.Recognition" />
+            type="com.parsamlm.plantector.viewmodel.Recognition" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
