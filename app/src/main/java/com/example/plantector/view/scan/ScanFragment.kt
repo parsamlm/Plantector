@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Matrix
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import android.util.Size
@@ -26,7 +25,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.plantector.R
 import com.example.plantector.databinding.FragmentScanBinding
 import com.example.plantector.ml.FlowerModel
-import com.example.plantector.model.Plant
 import com.example.plantector.util.YuvToRgbConverter
 import com.example.plantector.view.OnItemRecognizedClicked
 import com.example.plantector.view.RecognitionAdapter
@@ -55,11 +53,9 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
     lateinit var fragmentTransaction: FragmentTransaction
 
 
-
     // Contains the recognition result. Since  it is a viewModel, it will survive screen rotations
     private val recogViewModel: RecognitionListViewModel by viewModels()
-
-    private lateinit var scanViewModel: ScanViewModel
+    private val scanViewModel: ScanViewModel by viewModels()
     private var _binding: FragmentScanBinding? = null
     private val binding get() = _binding!!
 
@@ -76,7 +72,6 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        scanViewModel = ViewModelProvider(this).get(ScanViewModel::class.java)
         _binding = FragmentScanBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -188,10 +183,12 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build()
                 .also { analysisUseCase: ImageAnalysis ->
-                    analysisUseCase.setAnalyzer(cameraExecutor, ImageAnalyzer(requireContext()) { items ->
-                        // updating the list of recognised objects
-                        recogViewModel.updateData(items)
-                    })
+                    analysisUseCase.setAnalyzer(
+                        cameraExecutor,
+                        ImageAnalyzer(requireContext()) { items ->
+                            // updating the list of recognised objects
+                            recogViewModel.updateData(items)
+                        })
                 }
 
             // Select camera, back is the default. If it is not available, choose front camera
@@ -224,12 +221,12 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
         // Add class variable TensorFlow Lite Model
         // Initializing the flowerModel by lazy so that it runs in the same thread when the process
         // method is called.
-        private val flowerModel: FlowerModel by lazy{
+        private val flowerModel: FlowerModel by lazy {
 
             // Optional GPU acceleration
             val compatList = CompatibilityList()
 
-            val options = if(compatList.isDelegateSupportedOnThisDevice) {
+            val options = if (compatList.isDelegateSupportedOnThisDevice) {
                 Log.d(TAG, "This device is GPU Compatible ")
                 Model.Options.Builder().setDevice(Model.Device.GPU).build()
             } else {
@@ -306,26 +303,13 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
     }
 
     override fun onSeeMoreButtonClicked(plantName: String) {
-        val plantList = Plant.getDefaultFlowerList()
-        var targetPlant = Plant("", "", 0)
-        for (plant in plantList){
-            if(plantName[plantName.lastIndex] == 's'){
-                val newPlantName = plantName.substring(0, plantName.lastIndex).lowercase()
-                if (newPlantName == plant.name.lowercase()){
-                    targetPlant = plant
-                    targetPlant.name = targetPlant.name.lowercase()
-                    break
-                }
-            }else{
-                if (plant.name.lowercase() == plantName){
-                    targetPlant = plant
-                }
-            }
-
-        }
-        fragmentTransaction.replace(R.id.nav_host_fragment_activity_main, PlantDetailsFragment.newInstance(targetPlant))
+        // todo bug is here maybe - viewmodel?
+        val targetPlant = scanViewModel.getTargetPlant(plantName)
+        fragmentTransaction.replace(
+            R.id.nav_host_fragment_activity_main,
+            PlantDetailsFragment.newInstance(plant = targetPlant)
+        )
             .addToBackStack("Fragment_PlantDetails").commit()
-
     }
 
 

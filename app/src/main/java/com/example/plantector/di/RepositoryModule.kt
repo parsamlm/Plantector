@@ -1,6 +1,7 @@
 package com.example.plantector.di
 
 import com.example.plantector.model.repository.PlantDetailsRepository
+import com.example.plantector.model.repository.ScanRepository
 import com.example.plantector.model.server.ApiService
 import dagger.Module
 import dagger.Provides
@@ -16,4 +17,10 @@ object RepositoryModule {
     @Provides
     fun providePlantDetailsRepository(api: ApiService): PlantDetailsRepository =
         PlantDetailsRepository(api)
+
+
+    @Singleton
+    @Provides
+    fun provideScanRepository(): ScanRepository = ScanRepository()
+
 }
