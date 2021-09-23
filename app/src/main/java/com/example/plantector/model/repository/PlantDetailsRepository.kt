@@ -10,7 +10,6 @@ class PlantDetailsRepository @Inject constructor(private val api: ApiService) {
         runBlocking {
             val jsonObject = api.getPlantDescription(plantName)
             return@runBlocking jsonObject.get("extract").asString
-
         }
 
 

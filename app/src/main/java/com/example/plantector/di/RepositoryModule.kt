@@ -1,5 +1,6 @@
 package com.example.plantector.di
 
+import com.example.plantector.model.repository.HomeRepository
 import com.example.plantector.model.repository.PlantDetailsRepository
 import com.example.plantector.model.repository.ScanRepository
 import com.example.plantector.model.server.ApiService
@@ -22,5 +23,10 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideScanRepository(): ScanRepository = ScanRepository()
+
+
+    @Singleton
+    @Provides
+    fun provideHomeRepository(): HomeRepository = HomeRepository()
 
 }

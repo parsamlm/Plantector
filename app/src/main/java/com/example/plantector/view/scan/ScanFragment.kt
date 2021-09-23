@@ -39,7 +39,7 @@ import org.tensorflow.lite.support.model.Model
 import java.util.concurrent.Executors
 
 private const val MAX_RESULT_DISPLAY = 1 // Maximum number of results displayed
-private const val TAG = "TFL Classify" // Name for logging
+private const val TAG = "TensorflowLite Log" // Name for logging
 private const val REQUEST_CODE_PERMISSIONS = 999 // Return code after asking for permission
 private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA) // permission needed
 
@@ -51,8 +51,8 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
     private lateinit var preview: Preview // Preview use case, fast, responsive view of the camera
     private lateinit var imageAnalyzer: ImageAnalysis // Analysis use case, for running ML code
     private lateinit var camera: Camera
+    private lateinit var fragmentTransaction: FragmentTransaction
     private val cameraExecutor = Executors.newSingleThreadExecutor()
-    lateinit var fragmentTransaction: FragmentTransaction
 
 
     // Contains the recognition result. Since  it is a viewModel, it will survive screen rotations
@@ -78,8 +78,6 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
         val root: View = binding.root
 
         fragmentTransaction = parentFragmentManager.beginTransaction()
-
-
 
         return root
     }
@@ -170,7 +168,6 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
         cameraProviderFuture.addListener(Runnable {
             // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-
             preview = Preview.Builder()
                 .build()
 
@@ -245,10 +242,10 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
             val items = mutableListOf<Recognition>()
 
             // Convert Image to Bitmap then to TensorImage
-            val tfImage = TensorImage.fromBitmap(toBitmap(imageProxy))
+            val tensorflowImage = TensorImage.fromBitmap(toBitmap(imageProxy))
 
             // Process the image using the trained model, sort and pick out the top results
-            val outputs = flowerModel.process(tfImage)
+            val outputs = flowerModel.process(tensorflowImage)
                 .probabilityAsCategoryList.apply {
                     sortByDescending { it.score } // Sort with highest confidence first
                 }.take(MAX_RESULT_DISPLAY) // take the top results
@@ -305,7 +302,6 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
     }
 
     override fun onSeeMoreButtonClicked(plantName: String) {
-        // todo bug is here maybe - viewmodel?
         val targetPlant = scanViewModel.getTargetPlant(plantName)
         fragmentTransaction.replace(
             R.id.nav_host_fragment_activity_main,

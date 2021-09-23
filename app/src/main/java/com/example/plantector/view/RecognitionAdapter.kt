@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.plantector.databinding.RecognitionItemBinding
-import com.example.plantector.model.Plant
-import com.example.plantector.view.scan.ScanFragment
 import com.example.plantector.viewmodel.Recognition
 
 lateinit var onItemRecognizedClickedInner: OnItemRecognizedClicked
@@ -43,7 +41,6 @@ class RecognitionAdapter(private val ctx: Context, private val onItemRecognizedC
         }
     }
 
-
 }
 
 class RecognitionViewHolder(private val binding: RecognitionItemBinding) :
@@ -51,8 +48,6 @@ class RecognitionViewHolder(private val binding: RecognitionItemBinding) :
 
     // Binding all the fields to the view - to see which UI element is bind to which field, check
     // out layout/recognition_item.xml
-
-
 
     fun bindTo(recognition: Recognition) {
         binding.recognitionItem = recognition

@@ -9,13 +9,13 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         android:background="@color/bottomNavigationBackgroundColor"
-        app:labelVisibilityMode="selected"
-        android:layout_gravity="bottom|center"
         app:itemHorizontalTranslationEnabled="false"
+        app:labelVisibilityMode="selected"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:menu="@menu/bottom_nav_menu" />
 
     <fragment

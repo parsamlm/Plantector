@@ -9,6 +9,6 @@ import javax.inject.Inject
 @HiltViewModel
 class ScanViewModel @Inject constructor(private val repository: ScanRepository) : ViewModel() {
 
-    fun getTargetPlant(plantName: String):Plant = repository.getTargetPlant(plantName)
+    fun getTargetPlant(plantName: String): Plant = repository.getTargetPlant(plantName)
 
 }

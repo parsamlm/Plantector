@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardElevation="2dp"
-    app:cardCornerRadius="10dp"
-    android:layout_margin="10dp"
-    android:layout_centerHorizontal="true"
-    app:rippleColor="@color/lowOpacityColorPrimary"
-    android:foreground="?attr/selectableItemBackground"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardBackgroundColor="@color/bottomNavigationBackgroundColor">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_margin="10dp"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/bottomNavigationBackgroundColor"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="2dp"
+    app:rippleColor="@color/lowOpacityColorPrimary">
 
     <LinearLayout
         android:id="@+id/item_linear_layout"
@@ -23,43 +22,43 @@
             android:id="@+id/item_iv"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
-            tools:src="@drawable/Item1"/>
+            android:scaleType="centerCrop"
+            tools:src="@drawable/Item1" />
 
         <TextView
             android:id="@+id/item_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Daffodil"
-            android:textSize="17sp"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:fontFamily="@font/quicksand_semi_bold"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            tools:text="Daffodil" />
 
         <TextView
             android:id="@+id/item_family_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            tools:text="Amarylidaceae"
-            android:textSize="14sp"
             android:fontFamily="@font/quicksand_semi_bold"
-            android:textColor="@color/gray"/>
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            tools:text="Amarylidaceae" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/item_more_info_btn"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/more_information_text"
             android:layout_marginStart="7dp"
             android:layout_marginEnd="7dp"
+            android:gravity="start|center_vertical"
+            android:text="@string/more_information_text"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"
-            android:gravity="start|center_vertical"
-            android:textSize="12sp"
-            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+            android:textSize="12sp" />
 
     </LinearLayout>
 

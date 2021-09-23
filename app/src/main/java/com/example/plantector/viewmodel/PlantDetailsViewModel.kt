@@ -9,8 +9,7 @@ import javax.inject.Inject
 class PlantDetailsViewModel @Inject constructor(private val plantDetailsRepository: PlantDetailsRepository) :
     ViewModel() {
 
-
-    fun getPlantDescription(plantName: String): String = plantDetailsRepository.getPlantDescription(plantName)
-
+    fun getPlantDescription(plantName: String): String =
+        plantDetailsRepository.getPlantDescription(plantName)
 
 }

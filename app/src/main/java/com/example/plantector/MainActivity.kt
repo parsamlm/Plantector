@@ -4,11 +4,8 @@ import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.plantector.databinding.ActivityMainBinding
-import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,14 +20,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
-
         navView.setOnItemReselectedListener {
-
+            // there is no need to write code here,
+            // just call this listener to deactivate reselect item listener
         }
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-
-
         navView.setupWithNavController(navController)
     }
 }

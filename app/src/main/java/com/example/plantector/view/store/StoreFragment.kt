@@ -1,7 +1,6 @@
 package com.example.plantector.view.store
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,19 +11,12 @@ import com.example.plantector.util.Helper
 import com.example.plantector.R
 import com.example.plantector.databinding.FragmentStoreBinding
 import com.example.plantector.view.settings.SettingsActivity
-import com.example.plantector.viewmodel.StoreViewModel
 
 class StoreFragment : Fragment() {
 
     private var _binding: FragmentStoreBinding? = null
 
-    companion object {
-        fun newInstance() = StoreFragment()
-    }
-
     private val binding get() = _binding!!
-
-    private lateinit var viewModel: StoreViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +26,7 @@ class StoreFragment : Fragment() {
         _binding = FragmentStoreBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        binding.dateStoreTv.text = Helper.getDate()
+        binding.dateStoreTv.text = Helper.getTodayDate()
 
         return root
     }
@@ -47,10 +39,9 @@ class StoreFragment : Fragment() {
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(StoreViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
