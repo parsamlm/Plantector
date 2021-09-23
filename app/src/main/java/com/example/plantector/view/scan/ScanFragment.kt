@@ -32,6 +32,7 @@ import com.example.plantector.view.plant.details.PlantDetailsFragment
 import com.example.plantector.viewmodel.Recognition
 import com.example.plantector.viewmodel.RecognitionListViewModel
 import com.example.plantector.viewmodel.ScanViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import org.tensorflow.lite.gpu.CompatibilityList
 import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.model.Model
@@ -44,6 +45,7 @@ private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA) // permis
 
 typealias RecognitionListener = (recognition: List<Recognition>) -> Unit
 
+@AndroidEntryPoint
 class ScanFragment : Fragment(), OnItemRecognizedClicked {
 
     private lateinit var preview: Preview // Preview use case, fast, responsive view of the camera
