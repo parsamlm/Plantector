@@ -1,5 +1,6 @@
 package com.parsamlm.plantector.view.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.parsamlm.plantector.model.Plant
 import com.google.android.material.button.MaterialButton
 
     lateinit var innerOnPlantItemClicked: PlantAdapter.OnPlantItemClicked
+
 class PlantAdapter(
     val context: Context,
     private val onPlantItemClicked: OnPlantItemClicked,
@@ -19,8 +21,11 @@ class PlantAdapter(
 ) :
     RecyclerView.Adapter<PlantAdapter.PlantViewHolder>() {
 
+    private var searchList = ArrayList<Plant>()
+
     init {
         innerOnPlantItemClicked = this.onPlantItemClicked
+        copyPlantListIntoSearchList()
     }
 
 
@@ -31,28 +36,29 @@ class PlantAdapter(
     }
 
     override fun onBindViewHolder(holder: PlantViewHolder, position: Int) {
-        holder.bind(plantList[position])
+        holder.bind(searchList[position])
     }
 
     override fun getItemCount(): Int {
-        return plantList.size
+        return searchList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun filter(query: String){
-        val searchList = arrayListOf<Plant>()
-        plantList.forEach {
-            if(it.name.contains(query)){
-                searchList.add(it)
+        if(query.isNotEmpty()){
+            searchList.clear()
+            plantList.forEach {
+                if (it.name.startsWith(prefix = query, ignoreCase = true)){
+                    searchList.add(it)
+                    notifyDataSetChanged()
+                }
             }
+        }else{
+            searchList.clear()
+            copyPlantListIntoSearchList()
+            notifyDataSetChanged()
         }
-        updateList(searchList)
     }
-
-    private fun updateList(searchList: List<Plant>){
-        plantList = searchList
-        notifyDataSetChanged()
-    }
-
 
     class PlantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val img: ImageView = itemView.findViewById(R.id.item_iv)
@@ -70,6 +76,12 @@ class PlantAdapter(
             }
         }
 
+    }
+
+    fun copyPlantListIntoSearchList(){
+        plantList.forEach {
+            searchList.add(it)
+        }
     }
 
     interface OnPlantItemClicked {
