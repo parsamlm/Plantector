@@ -61,7 +61,6 @@ class HomeFragment : Fragment(), PlantAdapter.OnPlantItemClicked {
 
         binding.searchBoxEtHome.addTextChangedListener {
             plantAdapter.filter(it.toString())
-            // todo search has some bugs
         }
 
     }
