@@ -8,7 +8,6 @@ class Helper {
         fun getTodayDate(): String {
             return Tempo.now.toString().subSequence(0, 10).toString() + ", " + Tempo.now.toString()
                 .takeLast(4)
-
         }
     }
 }

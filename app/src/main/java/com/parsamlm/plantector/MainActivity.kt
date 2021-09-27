@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
             // there is no need to write code here,
             // just call this listener to deactivate reselect item listener
         }
-
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
     }
