@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.parsamlm.plantector.R
 import com.parsamlm.plantector.model.Plant
 import com.google.android.material.button.MaterialButton
-import com.parsamlm.plantector.util.implementSpringAnimationTrait
 
 lateinit var innerOnPlantItemClicked: PlantAdapter.OnPlantItemClicked
 
@@ -71,7 +70,6 @@ class PlantAdapter(
             img.setImageResource(plant.img_dir)
             name.text = plant.name
             family.text = plant.family
-            itemView.implementSpringAnimationTrait()
             moreInfoButton.setOnClickListener {
                 innerOnPlantItemClicked.onMoreInfoButtonClicked(plant)
             }

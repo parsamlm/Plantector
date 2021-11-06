@@ -144,7 +144,6 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
             if (allPermissionsGranted()) {
                 startCamera()
             } else {
-
                 Toast.makeText(
                     context,
                     getString(R.string.permission_deny_text),

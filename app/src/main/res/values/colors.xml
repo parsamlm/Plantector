@@ -22,5 +22,7 @@
     <color name="bottomNavigationBackgroundColor">#16282B</color>
     <color name="backgroundColorDark">#01151A</color>
 
+    <color name="orange_500">#F44336</color>
+
 
 </resources>
