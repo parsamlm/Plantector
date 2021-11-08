@@ -13,7 +13,7 @@ class RecognitionListViewModel : ViewModel() {
     val recognitionList: LiveData<List<Recognition>> = _recognitionList
 
     fun updateData(recognitions: List<Recognition>) {
-        if((recognitions[0].confidence * 100) > 70)
+        if((recognitions[0].confidence * 100) > 85)
             _recognitionList.postValue(recognitions)
     }
 
