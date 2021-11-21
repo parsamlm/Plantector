@@ -24,7 +24,8 @@
             android:layout_height="160dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            tools:src="@drawable/Item1" />
+            android:contentDescription="@string/item_description"
+            tools:src="@drawable/item1" />
 
         <TextView
             android:id="@+id/item_name_tv"

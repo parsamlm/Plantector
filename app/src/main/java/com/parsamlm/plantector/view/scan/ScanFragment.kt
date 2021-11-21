@@ -211,7 +211,7 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
                 Log.e(TAG, "Use case binding failed", exc)
             }
 
-        }, ContextCompat.getMainExecutor(context))
+        }, ContextCompat.getMainExecutor(requireContext()))
     }
 
     private class ImageAnalyzer(ctx: Context, private val listener: RecognitionListener) :

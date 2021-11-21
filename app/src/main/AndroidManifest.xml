@@ -18,7 +18,7 @@
             android:name="com.parsamlm.plantector.view.settings.SettingsActivity"
             android:exported="true" />
         <activity
-            android:name="com.parsamlm.plantector.MainActivity"
+            android:name="com.parsamlm.plantector.view.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

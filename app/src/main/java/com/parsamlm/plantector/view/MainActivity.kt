@@ -1,10 +1,11 @@
-package com.parsamlm.plantector
+package com.parsamlm.plantector.view
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.parsamlm.plantector.R
 import com.parsamlm.plantector.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

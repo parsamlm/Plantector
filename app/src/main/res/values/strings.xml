@@ -10,7 +10,13 @@
     <string name="dark_mode">Dark Mode</string>
     <string name="help_text_dark_mode_settings">Turn on to avoid irritating your eyes</string>
     <string name="description">Description</string>
-    <string name="plant_details_picture_description">Plant details picture.</string>
+    <string name="plant_details_picture_description">Flower picture.</string>
     <string name="permission_deny_text">Required permissions denied. Exiting.</string>
     <string name="see_more">See more</string>
+    <string name="back_button_description">Back</string>
+    <string name="settings_button_description">Settings</string>
+    <string name="item_description">Flower picture</string>
+    <string name="store_animation_description">Coming soon</string>
+    <string name="dark_mode_icon_description">Dark Mode</string>
+    <string name="search_icon_description">Search</string>
 </resources>

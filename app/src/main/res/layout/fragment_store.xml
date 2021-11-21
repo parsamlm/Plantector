@@ -27,7 +27,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Monday, September 13, 2021" />
+            tools:text="Monday, September 13, 2021"
+            tools:ignore="RelativeOverlap" />
 
         <ImageView
             android:id="@+id/settings_home_iv"
@@ -38,6 +39,7 @@
             android:background="@drawable/btn_bg_white"
             android:clickable="true"
             android:focusable="true"
+            android:contentDescription="@string/settings_button_description"
             android:foreground="@drawable/ic_filter_state"
             android:padding="6dp"
             android:src="@drawable/ic_settings_24" />
@@ -51,7 +53,8 @@
         android:layout_gravity="center"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/coming_soon_animation" />
+        app:lottie_rawRes="@raw/coming_soon_animation"
+        android:contentDescription="@string/store_animation_description"/>
 
 
 </FrameLayout>
