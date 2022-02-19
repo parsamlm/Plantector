@@ -5,7 +5,7 @@ import com.parsamlm.plantector.R
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
+@kotlinx.parcelize.Parcelize
 data class Plant(
     var name: String,
     val family: String,

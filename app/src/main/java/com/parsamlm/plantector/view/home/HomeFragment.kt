@@ -25,7 +25,7 @@ class HomeFragment : Fragment(), PlantAdapter.OnPlantItemClicked {
     private val homeViewModel: HomeViewModel by viewModels()
     private var _binding: FragmentHomeBinding? = null
     private lateinit var plantAdapter: PlantAdapter
-    lateinit var fragmentTransaction: FragmentTransaction
+    private lateinit var fragmentTransaction: FragmentTransaction
 
     private val binding get() = _binding!!
 
@@ -74,7 +74,7 @@ class HomeFragment : Fragment(), PlantAdapter.OnPlantItemClicked {
         fragmentTransaction.replace(
             R.id.nav_host_fragment_activity_main,
             PlantDetailsFragment.newInstance(plant)
-        )
+        ).setReorderingAllowed(true)
             .addToBackStack("Fragment_PlantDetails").commit()
     }
 }

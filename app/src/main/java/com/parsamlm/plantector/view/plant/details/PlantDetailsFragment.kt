@@ -14,15 +14,17 @@ import com.parsamlm.plantector.viewmodel.PlantDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PlantDetailsFragment(private val plant: Plant) : Fragment() {
+class PlantDetailsFragment(private val plant: Plant = Plant("Dahlia", "Asteraceae", R.drawable.dahlia)) : Fragment() {
     private val plantDetailsViewModel: PlantDetailsViewModel by viewModels()
     private var _binding: FragmentPlantDetailsBinding? = null
 
     private val binding get() = _binding!!
 
     companion object {
+        fun newInstance() = PlantDetailsFragment()
         fun newInstance(plant: Plant) = PlantDetailsFragment(plant)
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,16 +41,17 @@ class PlantDetailsFragment(private val plant: Plant) : Fragment() {
 
         binding.detailsIv.setImageResource(plant.img_dir)
         binding.detailsToolbar.title = plant.name
-        plantDetailsViewModel.getPlantDescription(plantName = plant.name).observe(viewLifecycleOwner, {
-            binding.descriptionTv.text = it
-        })
-        plantDetailsViewModel.isErrorOccurred().observe(viewLifecycleOwner, {
-            isOccurred ->
-            if (isOccurred == true){
+        plantDetailsViewModel.getPlantDescription(plantName = plant.name)
+            .observe(viewLifecycleOwner) {
+                binding.descriptionTv.text = it
+            }
+        plantDetailsViewModel.isErrorOccurred().observe(viewLifecycleOwner) { isOccurred ->
+            if (isOccurred == true) {
                 showSnackBar("No internet connection", R.color.orange_500)
             }
-        })
+        }
     }
+
 
 
     override fun onDestroyView() {

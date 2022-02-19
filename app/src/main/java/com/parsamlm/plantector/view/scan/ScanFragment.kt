@@ -4,11 +4,9 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
-import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.os.Bundle
-import android.util.Log
 import android.util.Size
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -106,11 +104,10 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
         // Attach an observer on the LiveData field of recognitionList
         // This will notify the recycler view to update every time when a new list is set on the
         // LiveData field of recognitionList.
-        recogViewModel.recognitionList.observe(viewLifecycleOwner,
-            Observer {
-                viewAdapter.submitList(it)
-            }
-        )
+        recogViewModel.recognitionList.observe(viewLifecycleOwner
+        ) {
+            viewAdapter.submitList(it)
+        }
 
         binding.backBtnScan.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_scan_to_navigation_home)
@@ -165,7 +162,7 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
-        cameraProviderFuture.addListener(Runnable {
+        cameraProviderFuture.addListener({
             // Used to bind the lifecycle of cameras to the lifecycle owner
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
             preview = Preview.Builder()
@@ -208,7 +205,7 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
                 // Attach the preview to preview view, aka View Finder
                 preview.setSurfaceProvider(viewFinder.surfaceProvider)
             } catch (exc: Exception) {
-                Log.e(TAG, "Use case binding failed", exc)
+                //Log.e(TAG, "Use case binding failed", exc)
             }
 
         }, ContextCompat.getMainExecutor(requireContext()))
@@ -226,10 +223,10 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
             val compatList = CompatibilityList()
 
             val options = if (compatList.isDelegateSupportedOnThisDevice) {
-                Log.d(TAG, "This device is GPU Compatible ")
+                //Log.d(TAG, "This device is GPU Compatible ")
                 Model.Options.Builder().setDevice(Model.Device.GPU).build()
             } else {
-                Log.d(TAG, "This device is GPU Incompatible ")
+                //Log.d(TAG, "This device is GPU Incompatible ")
                 Model.Options.Builder().setNumThreads(4).build()
             }
 
@@ -276,7 +273,7 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
             // Initialise Buffer
             if (!::bitmapBuffer.isInitialized) {
                 // The image rotation and RGB image buffer are initialized only once
-                Log.d(TAG, "Initalise toBitmap()")
+                //Log.d(TAG, "Initalise toBitmap()")
                 rotationMatrix = Matrix()
                 rotationMatrix.postRotate(imageProxy.imageInfo.rotationDegrees.toFloat())
                 bitmapBuffer = Bitmap.createBitmap(
@@ -306,8 +303,8 @@ class ScanFragment : Fragment(), OnItemRecognizedClicked {
         fragmentTransaction.replace(
             R.id.nav_host_fragment_activity_main,
             PlantDetailsFragment.newInstance(plant = targetPlant)
-        )
-            .addToBackStack("Fragment_PlantDetails").commit()
+        ).setReorderingAllowed(true)
+            .commit()
     }
 
 
